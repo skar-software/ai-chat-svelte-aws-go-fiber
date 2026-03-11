@@ -25,7 +25,7 @@
 	)}
 	shikiTheme={theme}
 	baseTheme="shadcn"
-	controls={{ table: false }}
+	controls={{ table: false, code: true }}
 	components={{ code: Code }}
 	shikiThemes={{
 		"github-light-default": githubLightDefault,

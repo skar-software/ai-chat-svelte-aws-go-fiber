@@ -11,14 +11,9 @@ export const demoMessages: ChatMessage[] = [
         id: "demo-2",
         role: "assistant",
         content:
-            "SvelteKit uses **filesystem-based routing**. Every file inside `src/routes` maps to a URL path.\n\n- `src/routes/+page.svelte` → `/`\n- `src/routes/about/+page.svelte` → `/about`\n- `src/routes/blog/[slug]/+page.svelte` → `/blog/:slug`\n\nYou can use **layout files** (`+layout.svelte`) to share UI between nested routes, and **server load functions** (`+page.server.ts`) to fetch data before rendering.",
+            "SvelteKit uses **filesystem-based routing**. Every file inside `src/routes` maps to a URL path.\n\n- `src/routes/+page.svelte` → `/`\n- `src/routes/about/+page.svelte` → `/about`\n- `src/routes/blog/[slug]/+page.svelte` → `/blog/:slug`\n\nYou can use **layout files** (`+layout.svelte`) to share UI between nested routes, and **server load functions** (`+page.server.ts`) to fetch data before rendering.\n\nHere is an example:\n\n```typescript\n// src/routes/blog/[slug]/+page.server.ts\nimport type { PageServerLoad } from './$types';\nimport { error } from '@sveltejs/kit';\n\nexport const load: PageServerLoad = async ({ params }) => {\n  const post = await getPost(params.slug);\n\n  if (!post) {\n    throw error(404, 'Post not found');\n  }\n\n  return { post };\n};\n```",
         parts: [
-            { type: "text", content: "" },
-            {
-                type: "code",
-                content: `// src/routes/blog/[slug]/+page.server.ts\nimport type { PageServerLoad } from './$types';\nimport { error } from '@sveltejs/kit';\n\nexport const load: PageServerLoad = async ({ params }) => {\n  const post = await getPost(params.slug);\n\n  if (!post) {\n    throw error(404, 'Post not found');\n  }\n\n  return { post };\n};`,
-                meta: { lang: "typescript", title: "+page.server.ts" },
-            },
+            { type: "text", content: "" }
         ],
     },
     {
@@ -128,6 +123,60 @@ export const demoMessages: ChatMessage[] = [
                     description: "A simple relational schema for messages and users.",
                 },
                 content: `## Users Table\n\n| Column | Type | Constraints |\n|---|---|---|\n| id | UUID | PRIMARY KEY |\n| username | VARCHAR(50) | UNIQUE, NOT NULL |\n| created_at | TIMESTAMP | DEFAULT NOW() |\n\n## Messages Table\n\n| Column | Type | Constraints |\n|---|---|---|\n| id | UUID | PRIMARY KEY |\n| user_id | UUID | FOREIGN KEY (users.id) |\n| content | TEXT | NOT NULL |\n| sent_at | TIMESTAMP | DEFAULT NOW() |`,
+            },
+        ],
+    },
+    {
+        id: "demo-13",
+        role: "user",
+        content: "What's on my task queue right now?",
+    },
+    {
+        id: "demo-14",
+        role: "assistant",
+        content: "Here's your current task queue:",
+        parts: [
+            { type: "text", content: "" },
+            {
+                type: "queue",
+                meta: {
+                    messages: [
+                        { id: "msg-1", text: "How do I set up the project?" },
+                        { id: "msg-2", text: "What is the roadmap for Q4?" },
+                        { id: "msg-3", text: "Update the default logo to this png." },
+                        { id: "msg-4", text: "Please generate a changelog." },
+                    ],
+                    todos: [
+                        { id: "todo-1", title: "Add dark mode support", status: "completed" },
+                        { id: "todo-2", title: "Optimize database queries", status: "completed" },
+                        { id: "todo-3", title: "Set up CI/CD pipeline", status: "completed" },
+                        {
+                            id: "todo-4",
+                            title: "Write project documentation",
+                            description: "Complete the README and API docs",
+                            status: "pending",
+                        },
+                        { id: "todo-5", title: "Implement authentication", status: "pending" },
+                        {
+                            id: "todo-6",
+                            title: "Fix bug #42",
+                            description: "Resolve crash on settings page",
+                            status: "pending",
+                        },
+                        {
+                            id: "todo-7",
+                            title: "Refactor queue logic",
+                            description: "Unify queue and todo state management",
+                            status: "pending",
+                        },
+                        {
+                            id: "todo-8",
+                            title: "Add unit tests",
+                            description: "Increase test coverage for hooks",
+                            status: "pending",
+                        },
+                    ],
+                },
             },
         ],
     }

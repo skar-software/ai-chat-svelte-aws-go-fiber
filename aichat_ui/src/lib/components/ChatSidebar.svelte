@@ -1,7 +1,7 @@
 <script lang="ts">
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
   import { Button } from "$lib/components/ui/button/index.js";
-  import { Plus, MessageSquare, MessageSquarePlus } from "@lucide/svelte";
+  import { Plus, MessageSquare } from "@lucide/svelte";
 
   interface Props {
     currentChatTitle?: string;

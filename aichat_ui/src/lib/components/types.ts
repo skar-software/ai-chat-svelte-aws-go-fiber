@@ -1,4 +1,4 @@
-export type DemoPartType = "text" | "code" | "artifact" | "confirmation" | "plan";
+export type DemoPartType = "text" | "code" | "artifact" | "confirmation" | "plan" | "queue";
 
 export interface DemoPart {
     type: DemoPartType;
