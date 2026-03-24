@@ -4,9 +4,7 @@ A monorepo for a reusable AI chat widget with a Go streaming API and a Svelte 5 
 
 ## Demo video
 
-Add a demo video at docs/demo.mp4 and it will render here:
-
-<video src="docs/demo.mp4" controls muted playsinline width="100%"></video>
+<video src="./demo-min.mp4" controls muted playsinline width="100%"></video>
 
 Direct link: [docs/demo.mp4](docs/demo.mp4)
 
