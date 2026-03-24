@@ -1,4 +1,4 @@
-# AI Chat Widget
+# AI Chat Widget for use in your SaaS apps
 
 A monorepo for a reusable AI chat widget with a Go Fiber streaming API and a Svelte 5 UI (Svelte AI).
 
